@@ -30,14 +30,18 @@ class ProductListView(ListView):
         pagination_context["total_products"] = paginator_obj.count
         pagination_context["total_pages"] = paginator_obj.num_pages
         page_number = self.request.GET.get('page')
-        print("paginator_obj.start_index", page_number)
+        print(" pring value ", self.request.GET)
+
 
         # print("total_pages, ", total_pages)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data()
         context["variant_price"] = ProductVariantPrice.objects.all()
-        context["paginator_obj"] = Paginator(Product.objects.all(), 2)
+        # context["paginator_obj"] = Paginator(Product.objects.all(), 2)
+        # self.handle_pagination()
+
+        print("context", context["page_obj"].number)
         return  context
 
 
